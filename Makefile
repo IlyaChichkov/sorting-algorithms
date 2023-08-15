@@ -6,7 +6,7 @@ CFLAGS=-g -Wall -Wextra -lsfml-system -lsfml-window
 SOURCES=main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
-EXECUTABLE=game
+EXECUTABLE=sort_algorithms
 
 all: build run
 
@@ -17,7 +17,7 @@ run:
 	./$(EXECUTABLE)
 
 clean:
-	rm -rf *.o game
-	rm -rf *.d game
+	rm -rf *.o $(EXECUTABLE)
+	rm -rf *.d $(EXECUTABLE)
 
 SRCS := $(shell find . -type f -name "*.cpp")
