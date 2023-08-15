@@ -1,3 +1,4 @@
 *.d
 */*.d
-game
+sort_algorithms
+imgui.ini
