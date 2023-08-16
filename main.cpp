@@ -236,18 +236,19 @@ void DrawGui(SortingCore& sortingCore)
     ImGui::Text("Is sorting dataset: %s", sortingCore.isSorting()? "true": "false");
     ImGui::Text("%s", sortingCore.sortingResults.c_str());
 
-    ImGui::Text("%s", "Show sorting steps:");
-    ImGui::Checkbox("Show sorting steps", &sortingCore.renderStepByStep);
-
     ImGui::Text("%s", "Dataset count");
     ImGui::InputInt("Dataset count", &sortingCore.datasetCount);
-
-    ImGui::Text("%s", "Sort step delay (ms)");
-    ImGui::InputInt("Sort step delay", &sortingCore.sortStepDelay);
 
     if (ImGui::Button("Create new array")) {
         if(!sortingCore.isSorting()) sortingCore.CreateArray();
     }
+
+    ImGui::Text("%s", "Show sorting steps:");
+    ImGui::Checkbox("Show sorting steps", &sortingCore.renderStepByStep);
+
+    ImGui::Text("%s", "Sort step delay (ms)");
+    ImGui::InputInt("Sort step delay", &sortingCore.sortStepDelay);
+
     if (ImGui::Button("Quick sort")) {
         sortingCore.sortMethod = sortingCore.QUICK_SORT;
         sortingCore.canStartSort = true;
