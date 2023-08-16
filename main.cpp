@@ -15,11 +15,6 @@
 using namespace std;
 
 bool showWindow = true;
-int generateRandom(int fMin, int fMax)
-{
-    double f = (double)rand() / RAND_MAX;
-    return fMin + f * (fMax - fMin);
-}
 
 double generateRandomDouble(double fMin, double fMax)
 {
