@@ -3,11 +3,11 @@
 
 #include "imgui.h"
 #include "imgui-SFML.h"
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 #include "src/gtime.h"
 #include <vector>
-#include <string.h>
+#include <cstring>
 #include <chrono>
 #include <sstream>
 #include <thread>
@@ -51,7 +51,7 @@ public:
 
     string sortingResults = "No results";
 
-    SortingCore(sf::RenderWindow& window)
+    explicit SortingCore(sf::RenderWindow& window)
     {
         renderWindow = &window;
         CreateArray();
@@ -283,7 +283,7 @@ void SortingCoreInitialize(){
     while (window.isOpen())
     {
         ProgramTime::RestartClock();
-        sf::Event event;
+        sf::Event event{};
         while (window.pollEvent(event))
         {
             ImGui::SFML::ProcessEvent(event);
@@ -323,7 +323,7 @@ void SortingCoreInitialize(){
 
 int main()
 {
-    srand(time(NULL));
+    srand(time(nullptr));
     SortingCoreInitialize();
     return 0;
 }
