@@ -1,0 +1,7 @@
+*.d
+*/*.d
+/cmake-build-debug
+/debug
+/.idea
+sort_algorithms
+imgui.ini
