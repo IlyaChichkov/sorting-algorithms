@@ -242,20 +242,24 @@ void DrawGui(SortingCore& sortingCore)
     ImGui::Text("%s", "Show sorting steps:");
     ImGui::Checkbox("Show sorting steps", &sortingCore.renderStepByStep);
 
-    ImGui::Text("%s", "Sort step delay (ms)");
-    ImGui::InputInt("Sort step delay", &sortingCore.sortStepDelay);
+    if(sortingCore.renderStepByStep){
+        ImGui::Text("%s", "Sort step delay (ms)");
+        ImGui::InputInt("Sort step delay", &sortingCore.sortStepDelay);
+    }
 
-    if (ImGui::Button("Quick sort")) {
-        sortingCore.sortMethod = sortingCore.QUICK_SORT;
-        sortingCore.canStartSort = true;
-    }
-    if (ImGui::Button("Bubble sort")) {
-        sortingCore.sortMethod = sortingCore.BUBBLE_SORT;
-        sortingCore.canStartSort = true;
-    }
-    if (ImGui::Button("Heap sort")) {
-        sortingCore.sortMethod = sortingCore.HEAP_SORT;
-        sortingCore.canStartSort = true;
+    if(!sortingCore.canStartSort){
+        if (ImGui::Button("Quick sort")) {
+            sortingCore.sortMethod = sortingCore.QUICK_SORT;
+            sortingCore.canStartSort = true;
+        }
+        if (ImGui::Button("Bubble sort")) {
+            sortingCore.sortMethod = sortingCore.BUBBLE_SORT;
+            sortingCore.canStartSort = true;
+        }
+        if (ImGui::Button("Heap sort")) {
+            sortingCore.sortMethod = sortingCore.HEAP_SORT;
+            sortingCore.canStartSort = true;
+        }
     }
 
     ImGui::End();
