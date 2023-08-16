@@ -14,9 +14,7 @@
 
 using namespace std;
 
-bool showWindow = true;
-
-double generateRandomDouble(double fMin, double fMax)
+double getRand(double fMin, double fMax)
 {
     double f = (double)rand() / RAND_MAX;
     return fMin + f * (fMax - fMin);
@@ -34,6 +32,7 @@ public:
     SortType sortMethod = SortType::QUICK_SORT;
 
     bool canStartSort = false;
+    bool showGui = false;
 
     bool renderStepByStep = true;
     int sortStepDelay = 100;
@@ -61,7 +60,7 @@ public:
         sortDataset.clear();
         for (size_t i = 0; i < datasetCount; i++)
         {
-            double val = generateRandomDouble(0.0, maxVal);
+            double val = getRand(0.0, maxVal);
             sortDataset.push_back(val);
         }
     }
@@ -168,7 +167,7 @@ public:
         {
             if(!canStartSort) continue;
             if(sortDataset.empty()) continue;
-            showWindow = false;
+            showGui = false;
 
             auto startTime = std::chrono::high_resolution_clock::now();
 
@@ -199,7 +198,7 @@ public:
             stream << "Execution time: " << duration_s << " s, " << duration_ms << " ms, (" << duration_ns << ") ns"  << std::endl;
             sortingResults = stream.str();
             canStartSort = false;
-            showWindow = true;
+            showGui = true;
         }
     }
 
@@ -225,8 +224,8 @@ public:
 
 void DrawGui(SortingCore& sortingCore)
 {
-    ImGui::SetWindowCollapsed(!showWindow);
-    ImGui::Begin("Settings", &showWindow);
+    ImGui::SetWindowCollapsed(!sortingCore.showGui);
+    ImGui::Begin("Settings", &sortingCore.showGui);
 
     ImGui::Text("Is sorting dataset: %s", sortingCore.isSorting()? "true": "false");
     ImGui::Text("%s", sortingCore.sortingResults.c_str());
