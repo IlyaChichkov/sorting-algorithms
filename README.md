@@ -9,7 +9,7 @@
 
 ## Overview
 
-![](./.github-media/showcase.gif)
+![](./.github-media/showcase_win.gif)
 
 Simple app showing different sorting algorithms. 
 
