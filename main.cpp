@@ -32,7 +32,7 @@ public:
     SortType sortMethod = SortType::QUICK_SORT;
 
     bool canStartSort = false;
-    bool showGui = false;
+    bool showGui = true;
 
     bool renderStepByStep = true;
     int sortStepDelay = 100;
@@ -224,9 +224,10 @@ public:
 
 void DrawGui(SortingCore& sortingCore)
 {
-    ImGui::SetWindowCollapsed(!sortingCore.showGui);
+    ImGui::SetNextWindowCollapsed(!sortingCore.showGui);
     ImGui::Begin("Settings", &sortingCore.showGui);
 
+    ImGui::Text("sortingCore.showGui: %s", sortingCore.showGui? "true": "false");
     ImGui::Text("Is sorting dataset: %s", sortingCore.isSorting()? "true": "false");
     ImGui::Text("%s", sortingCore.sortingResults.c_str());
 
