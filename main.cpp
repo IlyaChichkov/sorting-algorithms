@@ -270,7 +270,6 @@ void SortingCoreInitialize(){
     });
     sortingThread.detach();
 
-    bool buttonClicked = false;
     // Initialize ImGui
     ImGui::SFML::Init(window);
 
