@@ -209,6 +209,7 @@ public:
         sf::Vector2u wSize = window.getSize();
 
         double col_width = wSize.x / count;
+        if(count > wSize.x) col_width = 1.0;
 
         for (size_t i = 0; i < count; i++)
         {
